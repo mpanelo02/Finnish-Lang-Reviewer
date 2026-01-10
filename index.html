@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/jpg" href="images/fav-logo.gif">
+  <title>Harjoitellaan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/general.css">
+    <link rel="stylesheet" href="styles/header.css">
+    <link rel="stylesheet" href="styles/audio-player.css">
+</head>
+<body>
+  <header class="header-container">
+      <img class="header-background" src="images/header-background.png">
+      <div class="header-content">
+          <div class="center-section">
+              <img class="logo-image" src="images/MongrelDev-logo.gif">
+                <select id="topicDropdown" class="hidden">
+                    <option value="">Valitse aihe</option>
+                    <option value="b1Chapter4">Minä B1C4</option>
+                    <option value="b1Chapter5">Meidän tavallinen päivä B1C5</option>
+                    <option value="b1Chapter8">Onnea uuteen kotiin! B1C8</option>
+                    <option value="b1Chapter8p">Postpositiot B1C8</option>
+                    <option value="b1Chapter9">Ensimmäinen työpäivä B1C9</option>
+                    <option value="b1ChapterQ">Yleisiä kysymyksiä B1</option>
+                    
+                    <option value="b2Chapter1">Terveiset Turkista B2C1</option>
+                    <option value="b2Chapter2">Hanna on sairas B2C2</option>
+                    <option value="b2Chapter3">Mökillä B2C3</option>
+                    <option value="b2Chapter4">Mitä teet vapaa-ajalla B2C4</option>
+                </select>
+
+          </div>
+          <script src="src/dropdown.js"></script>
+           
+
+      </div>
+  </header>
+  <main class="main-container">
+    <div class="chapterQB1-container" hidden>
+      <h1>📖 Yleisiä kysymyksiä</h1>
+      <br />
+      <button onclick="getRandomQuestionQB1()">Kiepausta!</button>
+      <button onclick="repeatQuestionQB1()">🔁 Toista</button>
+      <br />
+      <br />
+      <audio id="audioPlayerQB1" controls></audio>
+    </div>
+
+    <div class="chapter9B1-container" hidden>
+      <h1>📖 Kappale Yhdeksän</h1>
+      <br />
+      <button onclick="playChapterYhdeksan()">▶ Soittaa</button>
+      <br />
+      <br />
+      <audio id="audioPlayer9" controls></audio>
+    </div>
+
+    <div class="chapter8B1-container" hidden>
+      <h1>📖 Kappale Kahdeksan</h1>
+      <br />
+      <button onclick="playChapterKahdeksan()">▶ Soittaa</button>
+      <br />
+      <button onclick="getRandomQuestion8()">Kiepausta!</button>
+      <button onclick="repeatQuestion8()">🔁 Toista</button>
+      <br />
+      <br />
+      <audio id="audioPlayer8" controls></audio>
+    </div>
+
+    <div class="chapter8pB1-container" hidden>
+      <h1>📖 Postpositiot</h1>
+      <br />
+      <button onclick="playChapterKahdeksanP()">▶ Soittaa</button>
+      <br />
+      <button onclick="getRandomQuestion8P()">Kiepausta!</button>
+      <button onclick="repeatQuestion8P()">🔁 Toista</button>
+      <br />
+      <br />
+      <audio id="audioPlayer8p" controls></audio>
+    </div>
+
+    <div class="chapter5B1-container" hidden>
+      <h1>📖 Kappale Viisi</h1>
+      <br />
+      <button onclick="playChapterViisi()">▶ Soittaa</button>
+      <br />
+      <button onclick="getRandomQuestion5()">Kiepausta!</button>
+      <button onclick="repeatQuestion5()">🔁 Toista</button>
+      <br />
+      <br />
+      <audio id="audioPlayer5" controls></audio>
+    </div>
+
+    <div class="chapter4B1-container" hidden>
+      <h1>📖 Kappale Nelja</h1>
+      <br />
+      <button onclick="playChapterNelja()">▶ Soittaa</button>
+      <br />
+      <button onclick="getRandomQuestion4()">Kiepausta!</button>
+      <button onclick="repeatQuestion4()">🔁 Toista</button>
+      <br />
+      <br />
+      <audio id="audioPlayer4" controls></audio>
+    </div>
+
+    <div class="chapter1B2-container" hidden>
+      <h1>📖 Kappale Yksi</h1>
+      <br />
+      <button onclick="playChapterYksi()">▶ Soittaa</button>
+      <br />
+      <button onclick="getRandomQuestion1B2()">Kiepausta!</button>
+      <button onclick="repeatQuestion1B2()">🔁 Toista</button>
+      <br />
+      <br />
+      <audio id="audioPlayer1B2" controls></audio>
+    </div>
+
+    <div class="chapter2B2-container" hidden>
+      <h1>📖 Kappale Kaksi</h1>
+      <br />
+      <button onclick="playChapterKaksi()">▶ Soittaa</button>
+      <br />
+      <button onclick="getRandomQuestion2B2()">Kiepausta!</button>
+      <button onclick="repeatQuestion2B2()">🔁 Toista</button>
+      <br />
+      <br />
+      <audio id="audioPlayer2B2" controls></audio>
+    </div>
+
+    <div class="chapter3B2-container" hidden>
+      <h1>📖 Kappale Kolme</h1>
+      <br />
+      <button onclick="playChapterKolme()">▶ Soittaa</button>
+      <br />
+      <button onclick="getRandomQuestion3B2()">Kiepausta!</button>
+      <button onclick="repeatQuestion3B2()">🔁 Toista</button>
+      <br />
+      <br />
+      <audio id="audioPlayer3B2" controls></audio>
+    </div>
+
+    <div class="chapter4B2-container" hidden>
+      <h1>📖 Kappale Neljä</h1>
+      <br />
+      <button onclick="playChapterNelja()">▶ Soittaa</button>
+      <br />
+      <button onclick="getRandomQuestion4B2()">Kiepausta!</button>
+      <button onclick="repeatQuestion4B2()">🔁 Toista</button>
+      <br />
+      <br />
+      <audio id="audioPlayer4B2" controls></audio>
+    </div>
+
+    <script src="src/player.js"></script>
+
+    
+  </main>
+
+</body>
+</html>

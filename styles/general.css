@@ -1,0 +1,17 @@
+body {
+    /* background: url(Batanes.jpg) no-repeat center center fixed; */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    /* padding: 50px; */
+    background-color: rgb(162, 162, 162);
+
+    /* display: grid;
+    grid-template-columns: 1fr; */
+    /* margin-top: 100px; */
+}
+
+/* @media (max-width: 700px) {
+    body {
+        max-width: 500px;
+    }
+} */
