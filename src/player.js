@@ -79,13 +79,16 @@ const questionAudios4 = [
     "B1chapter4/410.mp3",
     "B1chapter4/411.mp3",
 ];
-
+// Book 1
 const chapterYhdeksanAudio = "B1chapter9/Chapter_9.mp3";
 const chapterKahdeksanAudio = "B1chapter8/Chapter_8.mp3";
 const chapterKahdeksanPAudio = "B1chapter8p/Chapter_8P.mp3";
 const chapterViisiAudio = "B1chapter5/Chapter_5.mp3";
 const chapterNeljaAudio = "B1chapter4/Chapter_4.mp3";
+// Book 2
+const chapter1B2 = "B2chapter1/chapter1B2.mp3";
 
+// Book 1
 let currentAudioIndexQB1 = -1;
 const audioPlayerQB1 = document.getElementById('audioPlayerQB1');
 
@@ -103,7 +106,12 @@ const audioPlayer5 = document.getElementById('audioPlayer5');
 
 let currentAudioIndex4 = -1;
 const audioPlayer4 = document.getElementById('audioPlayer4');
+// Book 2
+let currentAudioIndex1B2 = -1;
+const audioPlayer1B2 = document.getElementById('audioPlayer1B2');
 
+
+// Book 1
 function playChapterYhdeksan() {
     audioPlayer9.src = chapterYhdeksanAudio;
     audioPlayer9.play().catch(e => console.error("Chapter audio play failed:", e));
@@ -123,6 +131,12 @@ function playChapterViisi() {
 function playChapterNelja() {
     audioPlayer4.src = chapterNeljaAudio;
     audioPlayer4.play().catch(e => console.error("Chapter audio play failed:", e));
+}
+
+// Book 2
+function playChapter1B2() {
+    audioPlayer1B2.src = chapter1B2;
+    audioPlayer1B2.play().catch(e => console.error("Chapter audio play failed:", e));
 }
 
 // Play Questions Function
@@ -244,7 +258,7 @@ window.onload = function() {
 
 // Stop the player
 function stopAllAudioPlayers() {
-    const audioPlayers = [audioPlayerQB1, audioPlayer9, audioPlayer8, audioPlayer8p, audioPlayer5, audioPlayer4];
+    const audioPlayers = [audioPlayerQB1, audioPlayer9, audioPlayer8, audioPlayer8p, audioPlayer5, audioPlayer4, audioPlayer1B2];
     audioPlayers.forEach(player => {
         if (player) {
             try {
@@ -260,67 +274,3 @@ function stopAllAudioPlayers() {
 }
 
 
-// Drop down option
-document.addEventListener("DOMContentLoaded", () => {
-    const dropdown = document.getElementById("topicDropdown");
-    const containers = {
-        "b1ChapterQ": ".chapterQB1-container",
-        "b1Chapter9": ".chapter9B1-container",
-        "b1Chapter8": ".chapter8B1-container",
-        "b1Chapter8p": ".chapter8pB1-container",
-        "b1Chapter5": ".chapter5B1-container",
-        "b1Chapter4": ".chapter4B1-container",
-
-        "b2Chapter1": ".chapter1B2-container",
-        "b2Chapter2": ".chapter2B2-container",
-        "b2Chapter3": ".chapter3B2-container",
-        "b2Chapter4": ".chapter4B2-container"
-    };
-
-    // Function to stop all audio players
-    function stopAllAudioPlayers() {
-        // Get all audio elements on the page
-        const allAudioElements = document.querySelectorAll('audio');
-        
-        allAudioElements.forEach(audio => {
-            try {
-                audio.pause();
-                audio.currentTime = 0;
-            } catch (e) {
-                console.error("Error stopping audio:", e);
-            }
-        });
-        
-        // Also stop the audio player variables
-        const audioPlayers = [audioPlayerQB1, audioPlayer9, audioPlayer8, audioPlayer8p, audioPlayer5, audioPlayer4];
-        audioPlayers.forEach(player => {
-            if (player && typeof player.pause === 'function') {
-                try {
-                    player.pause();
-                    player.currentTime = 0;
-                } catch (e) {
-                    console.error("Error stopping player:", e);
-                }
-            }
-        });
-    }
-
-    dropdown.addEventListener("change", () => {
-        // Stop all audio before switching topics
-        stopAllAudioPlayers();
-        
-        // Hide all containers
-        Object.values(containers).forEach(selector => {
-            const container = document.querySelector(selector);
-            if (container) {
-                container.hidden = true;
-            }
-        });
-
-        // Show selected container
-        const selectedContainer = document.querySelector(containers[dropdown.value]);
-        if (selectedContainer) {
-            selectedContainer.hidden = false;
-        }
-    });
-});
