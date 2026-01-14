@@ -22,6 +22,14 @@ const questionAudiosQB1 = [
     "B1chapterQ/talvesta.mp3",
     "B1chapterQ/tanaan.mp3",
     "B1chapterQ/Viikonloppuna.mp3",
+    "B1chapterQ/Q001.mp3",
+    "B1chapterQ/Q002.mp3",
+    "B1chapterQ/Q003.mp3",
+    "B1chapterQ/Q004.mp3",
+    "B1chapterQ/Q005.mp3",
+    "B1chapterQ/Q006.mp3",
+    "B1chapterQ/Q007.mp3",
+    "B1chapterQ/Q008.mp3",
 ]
 
 const questionAudios8 = [
@@ -161,30 +169,109 @@ function playQuestion4(index) {
     audioPlayer4.play().catch(e => console.error("Audio play failed:", e));
 }
 
+// function getRandomQuestionQB1() {
+//     const randomIndex = Math.floor(Math.random() * questionAudiosQB1.length);
+//     currentAudioIndexQB1 = randomIndex;
+//     playQuestionQB1(randomIndex);
+// }
+// function getRandomQuestion8() {
+//     const randomIndex = Math.floor(Math.random() * questionAudios8.length);
+//     currentAudioIndex8 = randomIndex;
+//     playQuestion8(randomIndex);
+// }
+// function getRandomQuestion8P() {
+//     const randomIndex = Math.floor(Math.random() * questionAudios8P.length);
+//     currentAudioIndex8p = randomIndex;
+//     playQuestion8P(randomIndex);
+// }
+// function getRandomQuestion5() {
+//     const randomIndex = Math.floor(Math.random() * questionAudios5.length);
+//     currentAudioIndex5 = randomIndex;
+//     playQuestion5(randomIndex);
+// }
+// function getRandomQuestion4() {
+//     const randomIndex = Math.floor(Math.random() * questionAudios4.length);
+//     currentAudioIndex4 = randomIndex;
+//     playQuestion4(randomIndex);
+// }
+let remainingQB1 = [...questionAudiosQB1];
+let remaining8 = [...questionAudios8];
+let remaining8P = [...questionAudios8P];
+let remaining5 = [...questionAudios5];
+let remaining4 = [...questionAudios4];
+
 function getRandomQuestionQB1() {
-    const randomIndex = Math.floor(Math.random() * questionAudiosQB1.length);
-    currentAudioIndexQB1 = randomIndex;
-    playQuestionQB1(randomIndex);
+    // Reset when all questions are used
+    if (remainingQB1.length === 0) {
+        remainingQB1 = [...questionAudiosQB1];
+    }
+
+    const randomIndex = Math.floor(Math.random() * remainingQB1.length);
+    const audioSrc = remainingQB1[randomIndex];
+
+    // Save index for repeat button
+    currentAudioIndexQB1 = questionAudiosQB1.indexOf(audioSrc);
+
+    // Remove played question
+    remainingQB1.splice(randomIndex, 1);
+
+    playQuestionQB1(currentAudioIndexQB1);
 }
+
 function getRandomQuestion8() {
-    const randomIndex = Math.floor(Math.random() * questionAudios8.length);
-    currentAudioIndex8 = randomIndex;
-    playQuestion8(randomIndex);
+    if (remaining8.length === 0) {
+        remaining8 = [...questionAudios8];
+    }
+
+    const randomIndex = Math.floor(Math.random() * remaining8.length);
+    const audioSrc = remaining8[randomIndex];
+
+    currentAudioIndex8 = questionAudios8.indexOf(audioSrc);
+    remaining8.splice(randomIndex, 1);
+
+    playQuestion8(currentAudioIndex8);
 }
+
 function getRandomQuestion8P() {
-    const randomIndex = Math.floor(Math.random() * questionAudios8P.length);
-    currentAudioIndex8p = randomIndex;
-    playQuestion8P(randomIndex);
+    if (remaining8P.length === 0) {
+        remaining8P = [...questionAudios8P];
+    }
+
+    const randomIndex = Math.floor(Math.random() * remaining8P.length);
+    const audioSrc = remaining8P[randomIndex];
+
+    currentAudioIndex8p = questionAudios8P.indexOf(audioSrc);
+    remaining8P.splice(randomIndex, 1);
+
+    playQuestion8P(currentAudioIndex8p);
 }
+
 function getRandomQuestion5() {
-    const randomIndex = Math.floor(Math.random() * questionAudios5.length);
-    currentAudioIndex5 = randomIndex;
-    playQuestion5(randomIndex);
+    if (remaining5.length === 0) {
+        remaining5 = [...questionAudios5];
+    }
+
+    const randomIndex = Math.floor(Math.random() * remaining5.length);
+    const audioSrc = remaining5[randomIndex];
+
+    currentAudioIndex5 = questionAudios5.indexOf(audioSrc);
+    remaining5.splice(randomIndex, 1);
+
+    playQuestion5(currentAudioIndex5);
 }
+
 function getRandomQuestion4() {
-    const randomIndex = Math.floor(Math.random() * questionAudios4.length);
-    currentAudioIndex4 = randomIndex;
-    playQuestion4(randomIndex);
+    if (remaining4.length === 0) {
+        remaining4 = [...questionAudios5];
+    }
+
+    const randomIndex = Math.floor(Math.random() * remaining4.length);
+    const audioSrc = remaining4[randomIndex];
+
+    currentAudioIndex4 = questionAudios4.indexOf(audioSrc);
+    remaining4.splice(randomIndex, 1);
+
+    playQuestion4(currentAudioIndex4);
 }
 
 function repeatQuestionQB1() {
