@@ -30,6 +30,16 @@ const questionAudiosQB1 = [
     "B1chapterQ/Q006.mp3",
     "B1chapterQ/Q007.mp3",
     "B1chapterQ/Q008.mp3",
+    "B1chapterQ/Q009.mp3",
+    "B1chapterQ/Q010.mp3",
+    "B1chapterQ/Q011.mp3",
+    "B1chapterQ/Q012.mp3",
+    "B1chapterQ/Q013.mp3",
+    "B1chapterQ/Q014.mp3",
+    "B1chapterQ/Q015.mp3",
+    "B1chapterQ/Q016.mp3",
+    "B1chapterQ/Q017.mp3",
+    "B1chapterQ/Q018.mp3",
 ]
 
 const questionAudios8 = [
