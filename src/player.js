@@ -1,4 +1,5 @@
 // Array of audio file paths for each question
+// Book 1
 const questionAudiosQB1 = [
     "B1chapterQ/aamulla.mp3",
     "B1chapterQ/aina.mp3",
@@ -97,6 +98,35 @@ const questionAudios4 = [
     "B1chapter4/410.mp3",
     "B1chapter4/411.mp3",
 ];
+
+// Book 2
+const questionAudios1B2 = [
+    "B2chapter1/B2-101.mp3",
+    "B2chapter1/B2-102.mp3",
+    "B2chapter1/B2-103.mp3",
+    "B2chapter1/B2-104.mp3",
+    "B2chapter1/B2-105.mp3",
+    "B2chapter1/B2-106.mp3",
+    "B2chapter1/B2-107.mp3",
+    "B2chapter1/B2-108.mp3",
+    "B2chapter1/B2-109.mp3",
+    "B2chapter1/B2-110.mp3",
+];
+
+const questionAudios2B2 = [
+    "B2chapter2/B2-201.mp3",
+    "B2chapter2/B2-202.mp3",
+    "B2chapter2/B2-203.mp3",
+    "B2chapter2/B2-204.mp3",
+    "B2chapter2/B2-205.mp3",
+    "B2chapter2/B2-206.mp3",
+    "B2chapter2/B2-207.mp3",
+    "B2chapter2/B2-208.mp3",
+    "B2chapter2/B2-209.mp3",
+    "B2chapter2/B2-210.mp3",
+];
+
+
 // Book 1
 const chapterYhdeksanAudio = "B1chapter9/Chapter_9.mp3";
 const chapterKahdeksanAudio = "B1chapter8/Chapter_8.mp3";
@@ -105,6 +135,7 @@ const chapterViisiAudio = "B1chapter5/Chapter_5.mp3";
 const chapterNeljaAudio = "B1chapter4/Chapter_4.mp3";
 // Book 2
 const chapter1B2 = "B2chapter1/chapter1B2.mp3";
+const chapter2B2 = "B2chapter2/chapter2B2.mp3";
 
 // Book 1
 let currentAudioIndexQB1 = -1;
@@ -127,6 +158,9 @@ const audioPlayer4 = document.getElementById('audioPlayer4');
 // Book 2
 let currentAudioIndex1B2 = -1;
 const audioPlayer1B2 = document.getElementById('audioPlayer1B2');
+
+let currentAudioIndex2B2 = -1;
+const audioPlayer2B2 = document.getElementById('audioPlayer2B2');
 
 
 // Book 1
@@ -156,8 +190,13 @@ function playChapter1B2() {
     audioPlayer1B2.src = chapter1B2;
     audioPlayer1B2.play().catch(e => console.error("Chapter audio play failed:", e));
 }
+function playChapter2B2() {
+    audioPlayer2B2.src = chapter2B2;
+    audioPlayer2B2.play().catch(e => console.error("Chapter audio play failed:", e));
+}
 
 // Play Questions Function
+// Book 1
 function playQuestionQB1(index) {
     audioPlayerQB1.src = questionAudiosQB1[index];
     audioPlayerQB1.play().catch(e => console.error("Audio play failed:", e));
@@ -179,6 +218,15 @@ function playQuestion4(index) {
     audioPlayer4.play().catch(e => console.error("Audio play failed:", e));
 }
 
+// Book 2
+function playQuestion1B2(index) {
+    audioPlayer1B2.src = questionAudios1B2[index];
+    audioPlayer1B2.play().catch(e => console.error("Audio play failed:", e));
+}
+function playQuestion2B2(index) {
+    audioPlayer2B2.src = questionAudios2B2[index];
+    audioPlayer2B2.play().catch(e => console.error("Audio play failed:", e));
+}
 // function getRandomQuestionQB1() {
 //     const randomIndex = Math.floor(Math.random() * questionAudiosQB1.length);
 //     currentAudioIndexQB1 = randomIndex;
@@ -209,7 +257,10 @@ let remaining8 = [...questionAudios8];
 let remaining8P = [...questionAudios8P];
 let remaining5 = [...questionAudios5];
 let remaining4 = [...questionAudios4];
+let remaining1B2 = [...questionAudios1B2];
+let remaining2B2 = [...questionAudios2B2];
 
+// Book 1
 function getRandomQuestionQB1() {
     // Reset when all questions are used
     if (remainingQB1.length === 0) {
@@ -272,7 +323,7 @@ function getRandomQuestion5() {
 
 function getRandomQuestion4() {
     if (remaining4.length === 0) {
-        remaining4 = [...questionAudios5];
+        remaining4 = [...questionAudios4];
     }
 
     const randomIndex = Math.floor(Math.random() * remaining4.length);
@@ -284,6 +335,35 @@ function getRandomQuestion4() {
     playQuestion4(currentAudioIndex4);
 }
 
+// Book 2
+function getRandomQuestion1B2() {
+    if (remaining1B2.length === 0) {
+        remaining1B2 = [...questionAudios1B2];
+    }
+
+    const randomIndex = Math.floor(Math.random() * remaining1B2.length);
+    const audioSrc = remaining1B2[randomIndex];
+
+    currentAudioIndex1B2 = questionAudios1B2.indexOf(audioSrc);
+    remaining1B2.splice(randomIndex, 1);
+
+    playQuestion1B2(currentAudioIndex1B2);
+}
+function getRandomQuestion2B2() {
+    if (remaining2B2.length === 0) {
+        remaining2B2 = [...questionAudios2B2];
+    }
+
+    const randomIndex = Math.floor(Math.random() * remaining2B2.length);
+    const audioSrc = remaining2B2[randomIndex];
+
+    currentAudioIndex2B2 = questionAudios2B2.indexOf(audioSrc);
+    remaining2B2.splice(randomIndex, 1);
+
+    playQuestion2B2(currentAudioIndex2B2);
+}
+
+// Book 1
 function repeatQuestionQB1() {
     if (currentAudioIndexQB1 >= 0) {
     playQuestionQB1(currentAudioIndexQB1);
@@ -310,9 +390,20 @@ function repeatQuestion4() {
     }
 }
 
-
+// Book 2
+function repeatQuestion1B2() {
+    if (currentAudioIndex1B2 >= 0) {
+    playQuestion1B2(currentAudioIndex1B2);
+    }
+}
+function repeatQuestion2B2() {
+    if (currentAudioIndex2B2 >= 0) {
+    playQuestion2B2(currentAudioIndex2B2);
+    }
+}
 
 // Preload audio files for better performance
+// Book 1
 function preloadAudiosQB1() {
     questionAudiosQB1.forEach(audioSrc => {
     const audio = new Audio();
@@ -344,6 +435,20 @@ function preloadAudios4() {
     });
 }
 
+// Book 2
+function preloadAudios1B2() {
+    questionAudios1B2.forEach(audioSrc => {
+    const audio = new Audio();
+    audio.src = audioSrc;
+    });
+}
+function preloadAudios2B2() {
+    questionAudios2B2.forEach(audioSrc => {
+    const audio = new Audio();
+    audio.src = audioSrc;
+    });
+}
+
 // Start preloading when page loads
 window.onload = function() {
     preloadAudios5();
@@ -351,11 +456,14 @@ window.onload = function() {
     preloadAudios8();
     preloadAudios8P();
     preloadAudiosQB1();
+    preloadAudios1B2();
+    preloadAudios2B2();
+
 };
 
 // Stop the player
 function stopAllAudioPlayers() {
-    const audioPlayers = [audioPlayerQB1, audioPlayer9, audioPlayer8, audioPlayer8p, audioPlayer5, audioPlayer4, audioPlayer1B2];
+    const audioPlayers = [audioPlayerQB1, audioPlayer9, audioPlayer8, audioPlayer8p, audioPlayer5, audioPlayer4, audioPlayer1B2, audioPlayer2B2];
     audioPlayers.forEach(player => {
         if (player) {
             try {
